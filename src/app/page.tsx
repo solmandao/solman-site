@@ -6,8 +6,9 @@ import { ResponseStream } from '@/components/ui/response-stream';
 
 export default function Home() {
   return (
-    <div className="w-full">
-      <HeroSection
+    <div className="w-full min-h-screen flex items-center justify-center">
+      <div className="w-full max-w-7xl mx-auto">
+        <HeroSection
         logo={{
             url: "/solmanlogo.png",
             alt: "SolmanDAO Logo",
@@ -39,12 +40,8 @@ export default function Home() {
           href: "#explore",
         }}
         backgroundImage="/solmandao-dao.png"
-        contactInfo={{
-            website: "yourwebsite.com",
-            phone: "+1 (555) 123-4567",
-            address: "20 Fieldstone Dr, Roswell, GA",
-        }}
-      />
+        />
+      </div>
     </div>
   );
 }
