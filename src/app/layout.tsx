@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Solman Website",
-  description: "Modern minimalistic landing page",
+  title: "Solman DAO",
+  description: "Building the Next Generation of On-Chain Citizens.",
 };
 
 export default function RootLayout({

@@ -3,10 +3,36 @@
 import { HeroSection } from '@/components/ui/hero-section-2';
 import { TextLoop } from '@/components/ui/text-loop';
 import { ResponseStream } from '@/components/ui/response-stream';
+import { FeatureSteps } from '@/components/ui/feature-section';
+import { BookOpen, Trophy, Vote } from 'lucide-react';
 
 export default function Home() {
+  const features = [
+    {
+      step: 'Step 1',
+      title: 'Learn.',
+      content: 'A hands-on educational initiative focused on introducing blockchain fundamentals, Solana, on-chain governance, and real-world participation',
+      image: '/islanddao/IMG_1724.png',
+      icon: BookOpen
+    },
+    {
+      step: 'Step 2',
+      title: 'Compete.',
+      content: 'Take part in sponsored international competitions, cycle races, and fitness programs',
+      image: '/islanddao/IMG_1721.png',
+      icon: Trophy
+    },
+    {
+      step: 'Step 3',
+      title: 'Govern.',
+      content: 'Become the on-chain citizen and vote on key initiatives such as grants, sponsorships, and rewards',
+      image: '/solmandao.png',
+      icon: Vote
+    }
+  ];
+
   return (
-    <div className="w-full min-h-screen flex items-center justify-center">
+    <div className="w-full min-h-screen flex items-center justify-center pt-28">
       <div className="w-full max-w-7xl mx-auto">
         <HeroSection
         logo={{
@@ -14,7 +40,7 @@ export default function Home() {
             alt: "SolmanDAO Logo",
             text: "SolmanDAO"
         }}
-        slogan="Turning Health into Wealth"
+        slogan="Building the Next Generation of On-Chain Citizens."
         title={
           <>
             SolmanDAO <br />
@@ -28,7 +54,7 @@ export default function Home() {
         }
         subtitle={
           <ResponseStream
-            textStream="Join a community that aims to foster health education, wellness, and fitness globally."
+            textStream="From Classrooms and Communities to On-Chain Governance."
             mode="fade"
             fadeDuration={400}
             segmentDelay={25}
@@ -36,10 +62,15 @@ export default function Home() {
           />
         }
         callToAction={{
-          text: "JOIN US TO EXPLORE",
+          text: "Explore Our Mission",
           href: "#explore",
         }}
-        backgroundImage="/solmandao-dao.png"
+          backgroundImage="/islanddao/IMG_1717.jpg"
+        />
+        <FeatureSteps
+          features={features}
+          title="Turning Participation Into Opportunity"
+          autoPlayInterval={3000}
         />
       </div>
     </div>
