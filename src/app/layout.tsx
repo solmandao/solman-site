@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { NavbarExpandable } from "@/components/ui/navbar-expandable";
 import { Footer } from "@/components/ui/footer";
-import { Twitter, Github, MessageCircle } from "lucide-react";
 import Image from "next/image";
 
 const inter = Inter({
@@ -39,18 +38,42 @@ export default function RootLayout({
           brandName="SolmanDAO"
           socialLinks={[
             {
-              icon: <Twitter className="h-5 w-5" />,
-              href: "https://twitter.com",
-              label: "Twitter",
+              icon: (
+                <Image
+                  src="/social-icons/twitter.png"
+                  alt="X (Twitter)"
+                  width={20}
+                  height={20}
+                  className="h-5 w-5"
+                />
+              ),
+              href: "https://x.com/@solmanatdao",
+              label: "X",
             },
             {
-              icon: <Github className="h-5 w-5" />,
-              href: "https://github.com",
+              icon: (
+                <Image
+                  src="/social-icons/github.png"
+                  alt="GitHub"
+                  width={20}
+                  height={20}
+                  className="h-5 w-5"
+                />
+              ),
+              href: "https://github.com/solmandao",
               label: "GitHub",
             },
             {
-              icon: <MessageCircle className="h-5 w-5" />,
-              href: "https://discord.com",
+              icon: (
+                <Image
+                  src="/social-icons/discord.png"
+                  alt="Discord"
+                  width={20}
+                  height={20}
+                  className="h-5 w-5"
+                />
+              ),
+              href: "https://discord.com/invite/solmanatdao",
               label: "Discord",
             },
           ]}
