@@ -83,14 +83,9 @@ export default function RootLayout({
             { href: "/events", label: "Events" },
             { href: "/education", label: "Education" },
           ]}
-          legalLinks={[
-            { href: "/privacy", label: "Privacy Policy" },
-            { href: "/terms", label: "Terms of Service" },
-            { href: "/faqs", label: "FAQs" },
-          ]}
+          legalLinks={[]}
           copyright={{
-            text: "© 2024 SolmanDAO",
-            license: "All rights reserved",
+            text: "© 2026 SolmanDAO",
           }}
         />
       </body>
