@@ -4,6 +4,7 @@ import { HeroSection } from '@/components/ui/hero-section-2';
 import { TextLoop } from '@/components/ui/text-loop';
 import { ResponseStream } from '@/components/ui/response-stream';
 import { FeatureSteps } from '@/components/ui/feature-section';
+import { MissionSection } from '@/components/ui/mission-section';
 import { BookOpen, Trophy, Vote } from 'lucide-react';
 
 export default function Home() {
@@ -72,6 +73,7 @@ export default function Home() {
           title="Turning Participation Into Opportunity"
           autoPlayInterval={3000}
         />
+        <MissionSection />
       </div>
     </div>
   );

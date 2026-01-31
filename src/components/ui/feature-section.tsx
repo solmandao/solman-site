@@ -52,7 +52,7 @@ export function FeatureSteps({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <div className="max-w-7xl mx-auto w-full pl-[64px] pr-[64px]">
+      <div className="max-w-7xl mx-auto w-full pl-[64px] pr-[64px] pt-[32px] pb-[32px]">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-center">
           {title}
         </h2>
