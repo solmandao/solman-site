@@ -354,7 +354,7 @@ function ResponseStream({
         return (
           <>
             <style>{fadeStyle}</style>
-            <div className="relative">
+            <span className="relative inline-block">
               {segments.map((segment, idx) => {
                 const isWhitespace = /^\s+$/.test(segment.text)
                 const isLastSegment = idx === segments.length - 1
@@ -377,7 +377,7 @@ function ResponseStream({
                   </span>
                 )
               })}
-            </div>
+            </span>
           </>
         )
 
