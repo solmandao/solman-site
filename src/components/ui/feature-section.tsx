@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { LucideIcon } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
 
 interface Feature {
   step: string
@@ -32,6 +33,30 @@ export function FeatureSteps({
   const [currentFeature, setCurrentFeature] = useState(0)
   const [progress, setProgress] = useState(0)
 
+  // Animation variants for the container to orchestrate children animations
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  }
+
+  // Animation variants for individual card elements
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  }
+
   useEffect(() => {
     const timer = setInterval(() => {
       if (progress < 100) {
@@ -58,49 +83,69 @@ export function FeatureSteps({
         </h2>
 
         <div className="flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-6">
-          <div className="order-2 md:order-1 space-y-4">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                className="flex items-center gap-4 md:gap-5"
-                initial={{ opacity: 0.3 }}
-                animate={{ opacity: index === currentFeature ? 1 : 0.3 }}
-                transition={{ duration: 0.5 }}
-              >
+          <motion.div 
+            className="order-2 md:order-1 flex flex-col gap-4 md:gap-4 justify-center items-start"
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
+            {features.map((feature, index) => {
+              const Icon = feature.icon
+              return (
                 <motion.div
-                  className={cn(
-                    "w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center border-2",
-                    index === currentFeature
-                      ? "bg-primary border-primary text-primary-foreground scale-110"
-                      : "bg-muted border-muted-foreground",
-                  )}
+                  key={index}
+                  variants={itemVariants}
+                  initial={{ opacity: 0.3 }}
+                  animate={{ opacity: index === currentFeature ? 1 : 0.3 }}
+                  transition={{ duration: 0.5 }}
                 >
-                  {(() => {
-                    const Icon = feature.icon
-                    return (
-                      <Icon 
-                        className={cn(
-                          "w-3 h-3 md:w-4 md:h-4",
-                          index === currentFeature 
-                            ? "text-primary-foreground" 
-                            : "text-muted-foreground"
-                        )}
-                      />
-                    )
-                  })()}
-                </motion.div>
+                  <Card
+                    className={cn(
+                      "w-full rounded-2xl shadow-lg bg-card text-card-foreground border-0",
+                      "pt-[18px] pb-[18px] px-4 md:px-6 h-[128px]",
+                      "transition-all duration-300",
+                      index === currentFeature && "shadow-xl"
+                    )}
+                  >
+                    <CardContent className="p-0">
+                      <div className="flex items-center justify-center gap-4 md:gap-5">
+                        <motion.div
+                          className={cn(
+                            "w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center border-2 flex-shrink-0",
+                            index === currentFeature
+                              ? "bg-primary border-primary text-primary-foreground scale-110"
+                              : "bg-muted border-muted-foreground",
+                          )}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <Icon 
+                            className={cn(
+                              "w-3 h-3 md:w-4 md:h-4",
+                              index === currentFeature 
+                                ? "text-primary-foreground" 
+                                : "text-muted-foreground"
+                            )}
+                          />
+                        </motion.div>
 
-                <div className="flex-1">
-                  <h3 className="text-lg md:text-xl font-semibold">
-                    {feature.title || feature.step}
-                  </h3>
-                  <p className="text-sm md:text-base text-muted-foreground">
-                    {feature.content}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className={cn(
+                            "text-lg md:text-xl font-semibold",
+                            index === currentFeature ? "text-foreground" : "text-muted-foreground"
+                          )}>
+                            {feature.title || feature.step}
+                          </h3>
+                          <p className="text-sm md:text-base text-muted-foreground mt-1">
+                            {feature.content}
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              )
+            })}
+          </motion.div>
 
           <div
             className={cn(
